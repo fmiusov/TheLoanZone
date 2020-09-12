@@ -188,6 +188,13 @@
 
         g.moveTo(paymentToX(0), amountToY(0));
         g.lineTo(paymentToX(payments), amountToY(monthly * payments));
+        g.lineTo(paymentToX(payments), amountToY(0));
+        g.closePath();
+        g.fillStyle = "#f88" // light red
+        g.fill();
+        g.font = "bold 12px sans-serif";
+        g.fillText("Total Interest Payments", 20,20); 
+
         
       };
     </script>

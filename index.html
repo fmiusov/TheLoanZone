@@ -190,10 +190,37 @@
         g.lineTo(paymentToX(payments), amountToY(monthly * payments));
         g.lineTo(paymentToX(payments), amountToY(0));
         g.closePath();
-        g.fillStyle = "#f88" // light red
+        g.fillStyle = "#f88"; // light red
         g.fill();
         g.font = "bold 12px sans-serif";
-        g.fillText("Total Interest Payments", 20,20); 
+        g.fillText("Total Interest Payments", 20, 20);
+
+        let equity = 0;
+        g.beginPath();
+        g.moveTo(paymentToX(0), amountToY(0));
+        for (var p = 1; p <= payments; p++) {
+          let thisMonthsInterest = (principal - equity) * interest;
+          equity += monthly - thisMonthsInterest;
+          g.lineTo(paymentToX(p), amountToY(equity));
+        }
+        g.lineTo(paymentToX(payments), amountToY(0));
+        g.closePath();
+        g.fillStyle = "green";
+        g.fill();
+        g.fillText("Total Equity", 20, 35);
+
+        let bal = principal;
+        g.beginPath();
+        g.moveTo(paymentToX(0), amountToY(bal));
+        for (var p = 1; p <= payments; p++) {
+          let thisMonthsInterest = bal * interest;
+          bal -= monthly - thisMonthsInterest;
+          g.lineTo(paymentToX(p), amountToY(bal));
+        }
+        g.lineWidth = 3;
+        g.stroke();
+        g.fillStyle = "black";
+        g.fillText("Loan Balance", 20,50);
 
         
       };

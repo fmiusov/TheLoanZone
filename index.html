@@ -19,10 +19,10 @@
     </style>
   </head>
   <body>
-    <!-- Credit for this code goes to the O'reilly Javascript Definitive Guide 6th Edition.
+    <!-- Credit for this code goes to the O'Reilly Javascript Definitive Guide 6th Edition.
          I have strayed from this code to make it my own, and am using this project as a 
          learning exercise with no intent to profit or claim sole authorship. I found this code
-         to be very strange in how it styles a static page as one big table, including empty spaces
+         to be very strange in how it styles a static page as one big table among other oddities,
          so I wanted to pick it apart to better understand the thought process. -->
     <table>
       <tr>
@@ -167,6 +167,28 @@
 
           ad.innerHTML = "<ul>" + list + "</ul>";
         };
+      };
+
+      const chart = (principal, interest, monthly, payments) => {
+        let graph = document.getElementById("graph");
+        graph.width = graph.width;
+
+        if (arguments.length === 0 || !graph.getContext) return;
+
+        let g = graph.getContext("2d");
+        let width = graph.width,
+          height = graph.height;
+
+        paymentToX = (x) => {
+          return (n * width) / payments;
+        };
+        amountToY = (a) => {
+          return height - (a * height) / (monthly * payments * 1.05);
+        };
+
+        g.moveTo(paymentToX(0), amountToY(0));
+        g.lineTo(paymentToX(payments), amountToY(monthly * payments));
+        
       };
     </script>
   </body>

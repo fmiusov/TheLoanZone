@@ -100,22 +100,26 @@
           save(amount.value, apr.value, years.value, zipcode.value);
 
           try {
-              getLenders(amount.value, apr.value, years.value, zipcode.value);
-          }
-          catch(e) {
-              console.log(e)
+            getLenders(amount.value, apr.value, years.value, zipcode.value);
+          } catch (e) {
+            console.log(e);
           }
         } else {
-            payment.innerHTML = "";
-            total.innerHTML = "";
-            totalinterest.innerHTML = "";
-            chart(); //clear the board
+          payment.innerHTML = "";
+          total.innerHTML = "";
+          totalinterest.innerHTML = "";
+          chart(); //clear the board
         }
       };
 
       const save = (amount, apr, years, zipcode) => {
-
-      }
+          if (window.localStorage) {
+              localStorage.loan_amount = amount;
+              localStorage.loan_apr = apr;
+              localStorage.loan_years = years;
+              localStorage.loan_zipcode = zipcode;
+          }
+      };
     </script>
   </body>
 </html>

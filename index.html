@@ -25,9 +25,18 @@
          to be very strange in how it styles a static page as one big table, including empty spaces
          so I wanted to pick it apart to better understand the thought process. -->
     <table>
-        <tr><th>Enter Info Here</th>
+      <tr>
+        <th>Enter Info Here</th>
         <td></td>
-        <th>Loan Balance, Cumulative Equity, and Interest Payments</th></tr>
+        <th>Loan Balance, Cumulative Equity, and Interest Payments</th>
+      </tr>
+      <tr>
+        <td>Loan Amount:</td>
+        <td><input id="amount" onchange="calculate();" /></td>
+        <td rowspan="8">
+          <canvas id="graph" width="400" height="250"></canvas>
+        </td>
+      </tr>
     </table>
     <script></script>
   </body>
